@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="lib/FlipClock-master/compiled/flipclock.css">
+        <script language="javascript" type="text/javascript" src="lib/jquery-1.11.2.js"></script>
+	</head>
+	<body>
+		<div class="your-clock"></div>
+		<script src="/lib/FlipClock-master/compiled/flipclock.min.js"></script>
+        <script>
+        var myClock = new FlipClock($('.your-clock'),{
+            autostart : false,
+            clockface : 'MinuteCounter',
+            defaultClockFace : 'MinuteCounter'
+        });
+        var set = function(){
+            myClock.setTime(60*prompt("幾分鐘？"));
+                     
+        };    
+        var myClock = $('.your-clock').FlipClock(0, {
+		countdown: true,
+		clockFace: 'MinuteCounter'
+        });
+        var Start = function()
+            myClock.start();
+        };
+           
+        </script>
+        <button onclick="set()">Set Time</button>
+        <button onclick="Start()">Start</button>
+    </body>
+</html>
+
