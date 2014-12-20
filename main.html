@@ -7,6 +7,8 @@
 		<script src="lib/FlipClock-master/compiled/flipclock.min.js"></script>
 		<script src="lib/handsontable/dist/handsontable.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="lib/howler/howler.min.js"></script>
+
 		<link rel="stylesheet" href="lib/FlipClock-master/compiled/flipclock.css">
 		<link rel="stylesheet" href="lib/handsontable/dist/handsontable.full.css">
 		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
@@ -14,6 +16,7 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+
 
 		<div id="clock" class="your-clock col-lg-4 col-centered"></div>
 		<button class="clock-btn btn btn-info col-md-offset-4 col-md-1" onclick="set()">時間設定</button>
@@ -25,11 +28,28 @@
 		</div>
 
         <script>
+
+
+
+		var countdown =	new Howl({
+			urls: ['music/Europe - The Final Countdown (Official Video).mp3']
+		})
+
+		var ending = new Howl({
+			urls: ['music/Maksim Mrvica playing Exodus by Ernest Gold (High Quality).mp3'],
+			loop: true
+		})
+
         var myClock = new FlipClock($('.your-clock'),{
             autostart : false,
             clockface : 'MinuteCounter',
-            defaultClockFace : 'MinuteCounter'
+            defaultClockFace : 'MinuteCounter',
+			callbacks: {interval: function() {
+				var event = new CustomEvent("interval", {});
+				document.dispatchEvent(event);
+			}}
         });
+		
         var set = function(){
             myClock.setTime(60*prompt("幾分鐘？"));
                      
@@ -41,6 +61,18 @@
 		var Start = function(){
             myClock.start();
         };
+
+		document.addEventListener("interval", function(e) {
+			var time =  myClock.getTime()["time"];
+			console.log(time);
+			if (time == 300) {
+				countdown.play();
+			}
+			if (time == 1) {
+				countdown.pause();
+				ending.play();
+			}
+		  });
            
         </script>
 		<script src="table.js"></script>
