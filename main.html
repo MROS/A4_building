@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-	<audio controls>
-		<source src="music/Europe - The Final Countdown (Official Video).mp3" type="audio/ogg">
-		<source src="horse.mp3" type="audio/mpeg">
-	</audio> 
+	<head>
+		<meta charset="UTF-8">
+		<title>雙溪國小紙疊高大賽</title>
+        <script language="javascript" type="text/javascript" src="lib/jquery-1.11.2.js"></script>
+		<script src="lib/FlipClock-master/compiled/flipclock.min.js"></script>
+		<script src="lib/handsontable/dist/handsontable.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="lib/FlipClock-master/compiled/flipclock.css">
+		<link rel="stylesheet" href="lib/handsontable/dist/handsontable.full.css">
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<div id="clock" class="your-clock col-lg-4 col-centered"></div>
+		<button class="clock-btn btn btn-info col-md-offset-4 col-md-1" onclick="set()">時間設定</button>
+		<button class="clock-btn btn btn-danger col-md-1" onclick="Start()">比賽開始</button>
+
+		<div id="whole_table" class="col-lg-4 col-centered">
+			<div id="grade_table" ></div>
+			<button id="add_group" type="button" class="btn btn-primary">增加隊伍</button>
+		</div>
+
+        <script>
+        var myClock = new FlipClock($('.your-clock'),{
+            autostart : false,
+            clockface : 'MinuteCounter',
+            defaultClockFace : 'MinuteCounter'
+        });
+        var set = function(){
+            myClock.setTime(60*prompt("幾分鐘？"));
+                     
+        };    
+        var myClock = $('.your-clock').FlipClock(0, {
+		countdown: true,
+		clockFace: 'MinuteCounter'
+        });
+		var Start = function(){
+            myClock.start();
+        };
+           
+        </script>
+		<script src="table.js"></script>
 	
-</body>
+	</body>
 </html>

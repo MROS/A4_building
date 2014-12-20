@@ -1,0 +1,22 @@
+#clock {
+	position: relative;
+	top: 80px;
+	float: none;
+	margin: 0 auto;
+	/* margin-top: 60px; */
+}
+
+.clock-btn {
+	float: none;
+	margin: 0 auto
+	position: relative;
+	top: 100px;
+	left: 5%;
+}
+
+#whole_table {
+	position: relative;
+	top: 200px;
+	float: none;
+	margin: 0 auto;
+}
